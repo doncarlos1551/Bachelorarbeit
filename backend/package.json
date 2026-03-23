@@ -1,0 +1,35 @@
+{
+  "name": "msl-backend",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "MCP Sandbox Layer Backend (Skelett)",
+  "scripts": {
+    "dev": "tsx watch src/server/http.ts",
+    "mcp:stdio": "tsx src/server/stdio.ts",
+    "mcp:http": "tsx src/server/http.ts",
+    "check": "tsc --noEmit",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.{ts,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,json}\""
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.13.1",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.15.0"
+  }
+}
