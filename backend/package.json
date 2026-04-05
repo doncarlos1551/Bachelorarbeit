@@ -1,9 +1,9 @@
 {
   "name": "msl-backend",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "MCP Sandbox Layer Backend (Skelett)",
+  "description": "MCP Sandbox Layer, Backend mit MCP-Server und Lowcoder-Adapter",
   "scripts": {
     "dev": "tsx watch src/server/http.ts",
     "mcp:stdio": "tsx src/server/stdio.ts",
@@ -18,7 +18,11 @@
     "@modelcontextprotocol/sdk": "^1.27.1",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "fast-json-patch": "^3.1.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",

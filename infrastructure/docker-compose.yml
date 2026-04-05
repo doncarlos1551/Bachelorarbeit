@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  mongo44:
+    image: mongo:4.4
+    container_name: lowcoder-mongo44
+    restart: unless-stopped
+    command: ["mongod", "--bind_ip_all"]
+    volumes:
+      - ./mongo-data:/data/db
+
+  lowcoder:
+    image: lowcoderorg/lowcoder-ce:latest
+    container_name: lowcoder-mvp
+    restart: unless-stopped
+    depends_on:
+      - mongo44
+    environment:
+      LOWCODER_MONGODB_ENABLED: "false"
+      LOWCODER_MONGODB_URL: "mongodb://mongo44:27017/lowcoder?authSource=admin"
+    ports:
+      - "3100:3000"
+    volumes:
+      - ./data:/lowcoder-stacks
