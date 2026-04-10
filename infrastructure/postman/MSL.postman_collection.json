@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "MSL MCP Sandbox Layer",
-    "description": "MSL API Smoke Tests.\n\nOrdner:\n- 01 Ops\n\nVariablen:\n- baseUrl\n- actorId\n- projectId\n",
+    "description": "MSL API Smoke Tests, Study Flow und Chat.\n\nOrdner:\n- 01 Ops\n- 02 Study Flow\n- 03 Study Reporting\n- 05 Chat\n\nVariablen:\n- baseUrl\n- actorId\n- projectId\n- studySessionId\n- caseRunId\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -17,12 +17,20 @@
     {
       "key": "projectId",
       "value": ""
+    },
+    {
+      "key": "studySessionId",
+      "value": ""
+    },
+    {
+      "key": "caseRunId",
+      "value": ""
     }
   ],
   "item": [
     {
       "name": "01 Ops",
-      "description": "Health, projects, context",
+      "description": "Health, config, context",
       "item": [
         {
           "name": "Health Check",
@@ -41,6 +49,14 @@
               }
             }
           ]
+        },
+        {
+          "name": "Config lesen",
+          "description": "Active gate config",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/config"
+          }
         },
         {
           "name": "Projekte auflisten",
@@ -85,6 +101,262 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"projectId\": \"{{projectId}}\",\n  \"actorId\": \"{{actorId}}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Queue lesen (alle offenen Plans)",
+          "description": "Open approval plans",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/queue"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 Study Flow",
+      "description": "Participant flow, step by step",
+      "item": [
+        {
+          "name": "1. Cases auflisten",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/cases"
+          }
+        },
+        {
+          "name": "2. Counterbalance-Designs",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/designs"
+          }
+        },
+        {
+          "name": "3. Session erstellen",
+          "description": "Session clone plus studySessionId",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/study/sessions",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"participantId\": \"P01\",\n  \"participantGroup\": \"professional_dev\",\n  \"counterbalanceDesignId\": \"A\",\n  \"metadata\": { \"source\": \"postman\" }\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.session) {",
+                  "  pm.collectionVariables.set('studySessionId', body.session.studySessionId);",
+                  "  if (body.projectId) pm.collectionVariables.set('projectId', body.projectId);",
+                  "  console.log('studySessionId gesetzt:', body.session.studySessionId);",
+                  "  console.log('Case-Sequence:', body.session.caseSequence.join(' -> '));",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "4. Case-Run starten",
+          "description": "Case run plus caseRunId",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/study/sessions/{{studySessionId}}/case-runs",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"caseId\": \"C01\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.caseRun) {",
+                  "  pm.collectionVariables.set('caseRunId', body.caseRun.caseRunId);",
+                  "  console.log('caseRunId gesetzt:', body.caseRun.caseRunId);",
+                  "  console.log('variant:', body.variant);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "5. Session-Status prüfen",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/sessions/{{studySessionId}}"
+          }
+        },
+        {
+          "name": "6. Case-Run abschließen",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/admin/study/case-runs/{{caseRunId}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"completed\"\n}"
+            }
+          }
+        },
+        {
+          "name": "7. Response erfassen (Ratings)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/study/responses",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"studySessionId\": \"{{studySessionId}}\",\n  \"caseRunId\": \"{{caseRunId}}\",\n  \"caseId\": \"C01\",\n  \"variant\": \"diff_risk\",\n  \"decision\": \"approve\",\n  \"correct\": true,\n  \"decisionTimeMs\": 12400,\n  \"trustRating\": 5,\n  \"confidenceRating\": 6,\n  \"transparencyRating\": 5,\n  \"controlRating\": 4,\n  \"notes\": \"Risiko-Anzeige war hilfreich\"\n}"
+            }
+          }
+        },
+        {
+          "name": "8. Session abschließen",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/admin/study/sessions/{{studySessionId}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"completed\"\n}"
+            }
+          }
+        },
+        {
+          "name": "9. Export Session (JSON)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/export/{{studySessionId}}"
+          }
+        },
+        {
+          "name": "9. Export Session (CSV)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/export/{{studySessionId}}/csv"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 Study Reporting",
+      "description": "Sessions, responses, exports",
+      "item": [
+        {
+          "name": "Alle Sessions",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/sessions"
+          }
+        },
+        {
+          "name": "Responses für Session",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/responses?studySessionId={{studySessionId}}"
+          }
+        },
+        {
+          "name": "Bulk-Export (JSON)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/export-all"
+          }
+        },
+        {
+          "name": "Bulk-Export (CSV)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/export-all/csv"
+          }
+        },
+        {
+          "name": "Live-Tasks + Designs",
+          "description": "Frontend task catalog",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/study/live-tasks"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 Chat (LLM + MCP)",
+      "description": "Direct chat smoke tests",
+      "item": [
+        {
+          "name": "Verfügbare Modelle",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/chat/models"
+          }
+        },
+        {
+          "name": "Chat-Nachricht senden",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/chat",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Zeige mir die aktuelle Projektstruktur.\",\n  \"projectId\": \"{{projectId}}\",\n  \"model\": \"gpt-4o-mini\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Chat mit History",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/chat",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Füge einen Button mit Text 'Test' hinzu.\",\n  \"projectId\": \"{{projectId}}\",\n  \"model\": \"gpt-4o-mini\",\n  \"history\": [\n    { \"role\": \"user\", \"content\": \"Zeige die Projektstruktur.\" },\n    { \"role\": \"assistant\", \"content\": \"Das Projekt enthält 5 Komponenten.\" }\n  ]\n}"
             }
           }
         }

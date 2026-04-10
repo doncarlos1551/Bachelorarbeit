@@ -1,13 +1,14 @@
 {
   "name": "msl-backend",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
-  "description": "MCP Sandbox Layer, Backend mit MCP-Server und Lowcoder-Adapter",
+  "description": "MCP Sandbox Layer, Backend mit MCP-Server, Chat-Routing und Study-API",
   "scripts": {
     "dev": "tsx watch src/server/http.ts",
     "mcp:stdio": "tsx src/server/stdio.ts",
     "mcp:http": "tsx src/server/http.ts",
+    "seed": "tsx src/scripts/seed-study-template.ts",
     "check": "tsc --noEmit",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
@@ -15,7 +16,11 @@
     "format:check": "prettier --check \"src/**/*.{ts,json}\""
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^3.0.63",
+    "@ai-sdk/mcp": "1.0.35",
+    "@ai-sdk/openai": "^3.0.48",
     "@modelcontextprotocol/sdk": "^1.27.1",
+    "ai": "^6.0.137",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "^4.21.2",

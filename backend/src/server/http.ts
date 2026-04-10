@@ -7,6 +7,8 @@ import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { createBaselineMcpServer } from "src/server/mcp-server";
 import { BaselineService } from "src/app/service";
 import { readPositiveInt } from "src/shared/utils";
+import { createChatRouter } from "src/server/chat-routes";
+import { createStudyRouter } from "src/study/routes";
 
 type SessionContext = {
   transport: StreamableHTTPServerTransport;
@@ -17,9 +19,21 @@ const app = express();
 const port = readPositiveInt(process.env.MCP_HTTP_PORT, 7090);
 const sessions = new Map<string, SessionContext>();
 const adminService = new BaselineService();
+const dataDir = process.env.MSL_DATA_DIR ?? ".msl-data";
 
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
+
+// Chatendpunkt LLM über Vercel AI SDK an MCP
+app.use(
+  "/admin/chat",
+  createChatRouter({
+    service: adminService,
+    mcpUrl: `http://127.0.0.1:${port}/mcp`,
+  }),
+);
+
+app.use("/admin/study", createStudyRouter(dataDir));
 
 app.get("/admin/health", (_req, res) => {
   res.json({

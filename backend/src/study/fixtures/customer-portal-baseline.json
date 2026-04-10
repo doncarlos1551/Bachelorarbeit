@@ -1,0 +1,1083 @@
+{
+  "tempStates": [
+    {
+      "name": "subtotal",
+      "value": "149.95",
+      "order": 1
+    },
+    {
+      "name": "shipping_cost",
+      "value": "4.99",
+      "order": 2
+    },
+    {
+      "name": "currentCustomer",
+      "value": "{\"customerId\": \"C-00420\", \"displayName\": \"Max Mustermann\", \"legalName\": \"Maximilian Mustermann\", \"email\": \"m.mustermann@example.com\", \"phone\": \"+49 30 1234 5678\", \"memberSince\": \"2023-08-14\", \"tier\": \"Gold\"}",
+      "order": 3
+    },
+    {
+      "name": "total_price",
+      "value": "154.94",
+      "order": 4
+    }
+  ],
+  "ui": {
+    "layout": {
+      "node_checkout_submit": {
+        "w": 8,
+        "h": 3,
+        "x": 12,
+        "y": 26,
+        "i": "node_checkout_submit",
+        "moved": false,
+        "static": false
+      },
+      "node_customer_name_label": {
+        "w": 10,
+        "h": 1,
+        "x": 14,
+        "y": 4,
+        "i": "node_customer_name_label",
+        "moved": false,
+        "static": false
+      },
+      "node_address_input": {
+        "w": 12,
+        "h": 4,
+        "x": 0,
+        "y": 10,
+        "i": "node_address_input",
+        "moved": false,
+        "static": false
+      },
+      "node_shipping_label": {
+        "w": 12,
+        "h": 2,
+        "x": 12,
+        "y": 22,
+        "i": "node_shipping_label",
+        "moved": false,
+        "static": false
+      },
+      "node_page_header": {
+        "w": 24,
+        "h": 2,
+        "x": 0,
+        "y": 8,
+        "i": "node_page_header",
+        "moved": false,
+        "static": false
+      },
+      "node_nav_bar": {
+        "w": 24,
+        "h": 1,
+        "x": 0,
+        "y": 2,
+        "i": "node_nav_bar",
+        "moved": false,
+        "static": false
+      },
+      "node_cancel_btn": {
+        "w": 4,
+        "h": 3,
+        "x": 20,
+        "y": 26,
+        "i": "node_cancel_btn",
+        "moved": false,
+        "static": false
+      },
+      "node_total_display": {
+        "w": 12,
+        "h": 2,
+        "x": 12,
+        "y": 24,
+        "i": "node_total_display",
+        "moved": false,
+        "static": false
+      },
+      "node_status_text": {
+        "w": 24,
+        "h": 1,
+        "x": 0,
+        "y": 29,
+        "i": "node_status_text",
+        "moved": false,
+        "static": false
+      },
+      "node_btnSubmitOrder": {
+        "w": 6,
+        "h": 2,
+        "x": 0,
+        "y": 55,
+        "i": "node_btnSubmitOrder",
+        "moved": false,
+        "static": false
+      },
+      "node_btnCancelOrder": {
+        "w": 6,
+        "h": 2,
+        "x": 6,
+        "y": 55,
+        "i": "node_btnCancelOrder",
+        "moved": false,
+        "static": false
+      },
+      "node_txtOrderTotal": {
+        "w": 6,
+        "h": 2,
+        "x": 18,
+        "y": 20,
+        "i": "node_txtOrderTotal",
+        "moved": false,
+        "static": false
+      },
+      "node_txtShippingCost": {
+        "w": 6,
+        "h": 2,
+        "x": 12,
+        "y": 20,
+        "i": "node_txtShippingCost",
+        "moved": false,
+        "static": false
+      },
+      "node_selPaymentMethod": {
+        "w": 12,
+        "h": 4,
+        "x": 0,
+        "y": 22,
+        "i": "node_selPaymentMethod",
+        "moved": false,
+        "static": false
+      },
+      "node_inpCouponCode": {
+        "w": 8,
+        "h": 4,
+        "x": 0,
+        "y": 18,
+        "i": "node_inpCouponCode",
+        "moved": false,
+        "static": false
+      },
+      "node_btnApplyCoupon": {
+        "w": 4,
+        "h": 4,
+        "x": 8,
+        "y": 18,
+        "i": "node_btnApplyCoupon",
+        "moved": false,
+        "static": false
+      },
+      "node_tblOrderItems": {
+        "w": 12,
+        "h": 10,
+        "x": 12,
+        "y": 10,
+        "i": "node_tblOrderItems",
+        "moved": false,
+        "static": false
+      },
+      "node_txtCustomerName": {
+        "w": 8,
+        "h": 2,
+        "x": 0,
+        "y": 32,
+        "i": "node_txtCustomerName",
+        "moved": false,
+        "static": false
+      },
+      "node_txtCustomerEmail": {
+        "w": 10,
+        "h": 1,
+        "x": 14,
+        "y": 5,
+        "i": "node_txtCustomerEmail",
+        "moved": false,
+        "static": false
+      },
+      "node_img_product_thumb": {
+        "w": 12,
+        "h": 12,
+        "x": 16,
+        "y": 32,
+        "i": "node_img_product_thumb",
+        "moved": false,
+        "static": false
+      },
+      "node_btnEditProfile": {
+        "w": 6,
+        "h": 1,
+        "x": 14,
+        "y": 6,
+        "i": "node_btnEditProfile",
+        "moved": false,
+        "static": false
+      },
+      "node_btnDeleteAccount": {
+        "w": 6,
+        "h": 2,
+        "x": 6,
+        "y": 40,
+        "i": "node_btnDeleteAccount",
+        "moved": false,
+        "static": false
+      },
+      "node_navMainMenu": {
+        "w": 10,
+        "h": 2,
+        "x": 14,
+        "y": 0,
+        "i": "node_navMainMenu",
+        "moved": false,
+        "static": false
+      },
+      "node_txtWelcomeMsg": {
+        "w": 14,
+        "h": 1,
+        "x": 0,
+        "y": 6,
+        "i": "node_txtWelcomeMsg",
+        "moved": false,
+        "static": false
+      },
+      "node_btnLogout": {
+        "w": 4,
+        "h": 1,
+        "x": 20,
+        "y": 6,
+        "i": "node_btnLogout",
+        "moved": false,
+        "static": false
+      },
+      "node_inpUsername": {
+        "w": 8,
+        "h": 3,
+        "x": 0,
+        "y": 64,
+        "i": "node_inpUsername",
+        "moved": false,
+        "static": false
+      },
+      "node_inpPassword": {
+        "w": 8,
+        "h": 3,
+        "x": 8,
+        "y": 64,
+        "i": "node_inpPassword",
+        "moved": false,
+        "static": false
+      },
+      "node_chkRememberMe": {
+        "w": 4,
+        "h": 2,
+        "x": 16,
+        "y": 64,
+        "i": "node_chkRememberMe",
+        "moved": false,
+        "static": false
+      },
+      "node_btnForgotPassword": {
+        "w": 4,
+        "h": 2,
+        "x": 20,
+        "y": 64,
+        "i": "node_btnForgotPassword",
+        "moved": false,
+        "static": false
+      },
+      "node_txtErrorMsg": {
+        "w": 24,
+        "h": 1,
+        "x": 0,
+        "y": 57,
+        "i": "node_txtErrorMsg",
+        "moved": false,
+        "static": false
+      },
+      "node_btnRetry": {
+        "w": 6,
+        "h": 2,
+        "x": 12,
+        "y": 55,
+        "i": "node_btnRetry",
+        "moved": false,
+        "static": false
+      },
+      "node_tblCustomerList": {
+        "w": 24,
+        "h": 8,
+        "x": 0,
+        "y": 46,
+        "i": "node_tblCustomerList",
+        "moved": false,
+        "static": false
+      },
+      "node_selStatusFilter": {
+        "w": 8,
+        "h": 2,
+        "x": 10,
+        "y": 43,
+        "i": "node_selStatusFilter",
+        "moved": false,
+        "static": false
+      },
+      "node_btnExportCSV": {
+        "w": 6,
+        "h": 2,
+        "x": 18,
+        "y": 40,
+        "i": "node_btnExportCSV",
+        "moved": false,
+        "static": false
+      },
+      "node_txtPageTitle": {
+        "w": 6,
+        "h": 5,
+        "x": 0,
+        "y": 190,
+        "i": "node_txtPageTitle",
+        "moved": false,
+        "static": false
+      },
+      "node_btnBackToList": {
+        "w": 6,
+        "h": 2,
+        "x": 12,
+        "y": 40,
+        "i": "node_btnBackToList",
+        "moved": false,
+        "static": false
+      },
+      "node_inpPhoneNumber": {
+        "w": 8,
+        "h": 3,
+        "x": 8,
+        "y": 32,
+        "i": "node_inpPhoneNumber",
+        "moved": false,
+        "static": false
+      },
+      "node_txtFooterInfo": {
+        "w": 24,
+        "h": 1,
+        "x": 0,
+        "y": 67,
+        "i": "node_txtFooterInfo",
+        "moved": false,
+        "static": false
+      },
+      "node_btnSaveChanges": {
+        "w": 6,
+        "h": 2,
+        "x": 0,
+        "y": 40,
+        "i": "node_btnSaveChanges",
+        "moved": false,
+        "static": false
+      },
+      "node_page_title": {
+        "w": 14,
+        "h": 2,
+        "x": 0,
+        "y": 0,
+        "i": "node_page_title",
+        "moved": false,
+        "static": false
+      },
+      "node_welcome_heading": {
+        "w": 14,
+        "h": 2,
+        "x": 0,
+        "y": 4,
+        "i": "node_welcome_heading",
+        "moved": false,
+        "static": false
+      },
+      "node_nav_clients": {
+        "w": 24,
+        "h": 1,
+        "x": 0,
+        "y": 54,
+        "i": "node_nav_clients",
+        "moved": false,
+        "static": false
+      },
+      "node_nav_client_list": {
+        "w": 10,
+        "h": 1,
+        "x": 0,
+        "y": 43,
+        "i": "node_nav_client_list",
+        "moved": false,
+        "static": false
+      },
+      "node_nav_client_detail": {
+        "w": 24,
+        "h": 1,
+        "x": 0,
+        "y": 31,
+        "i": "node_nav_client_detail",
+        "moved": false,
+        "static": false
+      },
+      "node_btn_new_client": {
+        "w": 6,
+        "h": 2,
+        "x": 18,
+        "y": 43,
+        "i": "node_btn_new_client",
+        "moved": false,
+        "static": false
+      },
+      "node_btn_edit_client": {
+        "w": 4,
+        "h": 1,
+        "x": 16,
+        "y": 45,
+        "i": "node_btn_edit_client",
+        "moved": false,
+        "static": false
+      },
+      "node_col_client_name": {
+        "w": 8,
+        "h": 1,
+        "x": 0,
+        "y": 45,
+        "i": "node_col_client_name",
+        "moved": false,
+        "static": false
+      },
+      "node_col_client_email": {
+        "w": 8,
+        "h": 1,
+        "x": 8,
+        "y": 45,
+        "i": "node_col_client_email",
+        "moved": false,
+        "static": false
+      },
+      "node_label_client_id": {
+        "w": 10,
+        "h": 1,
+        "x": 14,
+        "y": 3,
+        "i": "node_label_client_id",
+        "moved": false,
+        "static": false
+      },
+      "node_footer_client_count": {
+        "w": 4,
+        "h": 1,
+        "x": 20,
+        "y": 45,
+        "i": "node_footer_client_count",
+        "moved": false,
+        "static": false
+      },
+      "node_breadcrumb_clients": {
+        "w": 12,
+        "h": 1,
+        "x": 0,
+        "y": 3,
+        "i": "node_breadcrumb_clients",
+        "moved": false,
+        "static": false
+      }
+    },
+    "items": {
+      "node_checkout_submit": {
+        "compType": "button",
+        "comp": {
+          "text": "Bestellen",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "checkout_submit"
+      },
+      "node_customer_name_label": {
+        "compType": "text",
+        "comp": {
+          "text": "**Customer:** {{currentCustomer.value.displayName}}"
+        },
+        "name": "customer_name_label"
+      },
+      "node_address_input": {
+        "compType": "input",
+        "comp": {
+          "label": "Lieferadresse",
+          "value": "Musterstraße 42, 10115 Berlin",
+          "placeholder": "z.B. Musterstraße 42, 10115 Berlin"
+        },
+        "name": "address_input"
+      },
+      "node_shipping_label": {
+        "compType": "text",
+        "comp": {
+          "text": "Versand nach {{address_input.value}}: **{{shipping_cost.value}} €** (DHL Standard)"
+        },
+        "name": "shipping_label"
+      },
+      "node_page_header": {
+        "compType": "text",
+        "comp": {
+          "text": "## Customer Checkout, Bestellung abschließen"
+        },
+        "name": "page_header"
+      },
+      "node_nav_bar": {
+        "compType": "text",
+        "comp": {
+          "text": "**Start** · Customers · **Checkout** · Einstellungen"
+        },
+        "name": "nav_bar"
+      },
+      "node_cancel_btn": {
+        "compType": "button",
+        "comp": {
+          "text": "Abbrechen",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "cancel_btn"
+      },
+      "node_total_display": {
+        "compType": "text",
+        "comp": {
+          "text": "### Gesamt: **{{total_price.value}} €**"
+        },
+        "name": "total_display"
+      },
+      "node_status_text": {
+        "compType": "text",
+        "comp": {
+          "text": "Status: **Bereit zum Bestellen**"
+        },
+        "name": "status_text"
+      },
+      "node_btnSubmitOrder": {
+        "compType": "button",
+        "comp": {
+          "text": "Bestellen",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnSubmitOrder"
+      },
+      "node_btnCancelOrder": {
+        "compType": "button",
+        "comp": {
+          "text": "Abbrechen",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnCancelOrder"
+      },
+      "node_txtOrderTotal": {
+        "compType": "text",
+        "comp": {
+          "text": "**Gesamt** {{total_price.value}} €"
+        },
+        "name": "txtOrderTotal"
+      },
+      "node_txtShippingCost": {
+        "compType": "text",
+        "comp": {
+          "text": "Versand {{shipping_cost.value}} €"
+        },
+        "name": "txtShippingCost"
+      },
+      "node_selPaymentMethod": {
+        "compType": "select",
+        "comp": {
+          "label": "Zahlungsart",
+          "options": "[{\"label\": \"Kreditkarte\", \"value\": \"credit_card\"}, {\"label\": \"PayPal\", \"value\": \"paypal\"}, {\"label\": \"SEPA-Lastschrift\", \"value\": \"sepa\"}, {\"label\": \"Rechnung\", \"value\": \"invoice\"}]"
+        },
+        "name": "selPaymentMethod"
+      },
+      "node_inpCouponCode": {
+        "compType": "input",
+        "comp": {
+          "label": "Gutschein-Code",
+          "value": "",
+          "placeholder": "z.B. SPRING2026"
+        },
+        "name": "inpCouponCode"
+      },
+      "node_btnApplyCoupon": {
+        "compType": "button",
+        "comp": {
+          "text": "Gutschein einlösen",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnApplyCoupon"
+      },
+      "node_tblOrderItems": {
+        "compType": "table",
+        "comp": {
+          "data": "[{\"artikel\": \"Premium-Paket\", \"menge\": 1, \"preis\": \"99,00 €\"}, {\"artikel\": \"Zusatzlizenz (5×)\", \"menge\": 1, \"preis\": \"39,95 €\"}, {\"artikel\": \"Support-Flat 3 Mon.\", \"menge\": 1, \"preis\": \"11,00 €\"}]"
+        },
+        "name": "tblOrderItems"
+      },
+      "node_txtCustomerName": {
+        "compType": "text",
+        "comp": {
+          "text": "**Customer Name:** {{currentCustomer.value.displayName}}"
+        },
+        "name": "txtCustomerName"
+      },
+      "node_txtCustomerEmail": {
+        "compType": "text",
+        "comp": {
+          "text": "**Customer E-Mail:** {{currentCustomer.value.email}}"
+        },
+        "name": "txtCustomerEmail"
+      },
+      "node_img_product_thumb": {
+        "compType": "image",
+        "comp": {
+          "src": "https://picsum.photos/seed/portal/400/300"
+        },
+        "name": "img_product_thumb"
+      },
+      "node_btnEditProfile": {
+        "compType": "button",
+        "comp": {
+          "text": "Customer-Profil bearbeiten",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnEditProfile"
+      },
+      "node_btnDeleteAccount": {
+        "compType": "button",
+        "comp": {
+          "text": "Konto löschen",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnDeleteAccount"
+      },
+      "node_navMainMenu": {
+        "compType": "navigation",
+        "comp": {
+          "text": "**Menü** · Kunden · Bestellungen · Reports"
+        },
+        "name": "navMainMenu"
+      },
+      "node_txtWelcomeMsg": {
+        "compType": "text",
+        "comp": {
+          "text": "Customer seit {{currentCustomer.value.memberSince}} · Tier: {{currentCustomer.value.tier}}"
+        },
+        "name": "txtWelcomeMsg"
+      },
+      "node_btnLogout": {
+        "compType": "button",
+        "comp": {
+          "text": "Abmelden",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnLogout"
+      },
+      "node_inpUsername": {
+        "compType": "input",
+        "comp": {
+          "label": "Benutzername",
+          "value": "",
+          "placeholder": "Benutzername"
+        },
+        "name": "inpUsername"
+      },
+      "node_inpPassword": {
+        "compType": "input",
+        "comp": {
+          "label": "Passwort",
+          "value": "",
+          "placeholder": "Passwort"
+        },
+        "name": "inpPassword"
+      },
+      "node_chkRememberMe": {
+        "compType": "checkbox",
+        "comp": {
+          "label": "Angemeldet bleiben"
+        },
+        "name": "chkRememberMe"
+      },
+      "node_btnForgotPassword": {
+        "compType": "button",
+        "comp": {
+          "text": "Passwort vergessen?",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnForgotPassword"
+      },
+      "node_txtErrorMsg": {
+        "compType": "text",
+        "comp": {
+          "text": ""
+        },
+        "name": "txtErrorMsg"
+      },
+      "node_btnRetry": {
+        "compType": "button",
+        "comp": {
+          "text": "Erneut versuchen",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnRetry"
+      },
+      "node_tblCustomerList": {
+        "compType": "table",
+        "comp": {
+          "data": "[{\"customer_id\": \"C-00418\", \"customer_name\": \"Anna Schmidt\", \"customer_email\": \"anna.schmidt@example.com\", \"tier\": \"Silver\"}, {\"customer_id\": \"C-00419\", \"customer_name\": \"Ben Weber\", \"customer_email\": \"ben.weber@example.com\", \"tier\": \"Gold\"}, {\"customer_id\": \"C-00420\", \"customer_name\": \"Max Mustermann\", \"customer_email\": \"m.mustermann@example.com\", \"tier\": \"Gold\"}, {\"customer_id\": \"C-00421\", \"customer_name\": \"Lisa Becker\", \"customer_email\": \"lisa.becker@example.com\", \"tier\": \"Silver\"}]"
+        },
+        "name": "tblCustomerList"
+      },
+      "node_selStatusFilter": {
+        "compType": "select",
+        "comp": {
+          "label": "Status",
+          "options": "[{\"label\": \"Alle\", \"value\": \"all\"}, {\"label\": \"Aktiv\", \"value\": \"active\"}, {\"label\": \"Pausiert\", \"value\": \"paused\"}, {\"label\": \"Archiviert\", \"value\": \"archived\"}]"
+        },
+        "name": "selStatusFilter"
+      },
+      "node_btnExportCSV": {
+        "compType": "button",
+        "comp": {
+          "text": "CSV Export",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnExportCSV"
+      },
+      "node_txtPageTitle": {
+        "compType": "text",
+        "comp": {
+          "text": "Seitentitel"
+        },
+        "name": "txtPageTitle"
+      },
+      "node_btnBackToList": {
+        "compType": "button",
+        "comp": {
+          "text": "Zurück zur Liste",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnBackToList"
+      },
+      "node_inpPhoneNumber": {
+        "compType": "input",
+        "comp": {
+          "label": "Telefon",
+          "value": "+49 30 1234 5678",
+          "placeholder": "+49 30 ..."
+        },
+        "name": "inpPhoneNumber"
+      },
+      "node_txtFooterInfo": {
+        "compType": "text",
+        "comp": {
+          "text": "© 2026 Kundenportal · Impressum · AGB · Datenschutz"
+        },
+        "name": "txtFooterInfo"
+      },
+      "node_btnSaveChanges": {
+        "compType": "button",
+        "comp": {
+          "text": "Änderungen speichern",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btnSaveChanges"
+      },
+      "node_page_title": {
+        "compType": "text",
+        "comp": {
+          "text": "# Customer Portal"
+        },
+        "name": "page_title"
+      },
+      "node_welcome_heading": {
+        "compType": "text",
+        "comp": {
+          "text": "## Welcome Customer, {{currentCustomer.value.displayName}}"
+        },
+        "name": "welcome_heading"
+      },
+      "node_nav_clients": {
+        "compType": "text",
+        "comp": {
+          "text": "Customer Management"
+        },
+        "name": "nav_clients"
+      },
+      "node_nav_client_list": {
+        "compType": "text",
+        "comp": {
+          "text": "**All Customers** (4)"
+        },
+        "name": "nav_client_list"
+      },
+      "node_nav_client_detail": {
+        "compType": "text",
+        "comp": {
+          "text": "Customer › {{currentCustomer.value.displayName}}"
+        },
+        "name": "nav_client_detail"
+      },
+      "node_btn_new_client": {
+        "compType": "button",
+        "comp": {
+          "text": "+ New Customer",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btn_new_client"
+      },
+      "node_btn_edit_client": {
+        "compType": "button",
+        "comp": {
+          "text": "Edit Customer",
+          "type": "",
+          "buttonType": "default",
+          "form": "",
+          "hidden": "false",
+          "showDataLoadingIndicators": false,
+          "preventStyleOverwriting": false,
+          "appliedThemeId": "",
+          "version": "latest"
+        },
+        "name": "btn_edit_client"
+      },
+      "node_col_client_name": {
+        "compType": "text",
+        "comp": {
+          "text": "**Customer Name**"
+        },
+        "name": "col_client_name"
+      },
+      "node_col_client_email": {
+        "compType": "text",
+        "comp": {
+          "text": "**Customer E-Mail**"
+        },
+        "name": "col_client_email"
+      },
+      "node_label_client_id": {
+        "compType": "text",
+        "comp": {
+          "text": "**Customer-ID:** {{currentCustomer.value.customerId}}"
+        },
+        "name": "label_client_id"
+      },
+      "node_footer_client_count": {
+        "compType": "text",
+        "comp": {
+          "text": "4 Customers angezeigt"
+        },
+        "name": "footer_client_count"
+      },
+      "node_breadcrumb_clients": {
+        "compType": "text",
+        "comp": {
+          "text": "Customers › Übersicht"
+        },
+        "name": "breadcrumb_clients"
+      }
+    }
+  },
+  "hooks": [
+    {
+      "compType": "urlParams",
+      "comp": {},
+      "name": "url"
+    },
+    {
+      "compType": "dayJsLib",
+      "comp": {},
+      "name": "dayjs"
+    },
+    {
+      "compType": "lodashJsLib",
+      "comp": {},
+      "name": "_"
+    },
+    {
+      "compType": "utils",
+      "comp": {},
+      "name": "utils"
+    },
+    {
+      "compType": "message",
+      "comp": {},
+      "name": "message"
+    },
+    {
+      "compType": "toast",
+      "comp": {},
+      "name": "toast"
+    },
+    {
+      "compType": "localStorage",
+      "comp": {},
+      "name": "localStorage"
+    },
+    {
+      "compType": "currentUser",
+      "comp": {},
+      "name": "currentUser"
+    },
+    {
+      "compType": "screenInfo",
+      "comp": {},
+      "name": "screenInfo"
+    },
+    {
+      "compType": "theme",
+      "comp": {},
+      "name": "theme"
+    }
+  ],
+  "settings": {
+    "title": "",
+    "description": "",
+    "category": "Business",
+    "showHeaderInPublic": true,
+    "themeId": "default",
+    "preventAppStylesOverwriting": true,
+    "disableCollision": false,
+    "lowcoderCompVersion": "latest",
+    "maxWidth": {
+      "dropdown": "1920",
+      "input": 0
+    }
+  },
+  "preload": {
+    "libs": [],
+    "script": "",
+    "css": "",
+    "globalCSS": ""
+  },
+  "refTree": {
+    "value": "",
+    "items": [
+      {
+        "value": "calculate_total"
+      }
+    ]
+  },
+  "queries": [
+    {
+      "name": "calculate_total",
+      "compType": "js",
+      "comp": {
+        "code": "// Addiert Warenkorb + Versand\nreturn Number(subtotal.value) + Number(shipping_cost.value);"
+      }
+    }
+  ],
+  "__msl_baseline": {
+    "logic": {
+      "functions": [
+        {
+          "id": "calculate_total",
+          "queryId": "q_calculate_total_mnpst4gt",
+          "name": "calculate_total",
+          "code": "async function run(args) {\nconst total = subtotal.value + 4.99;\n state_upsert_temp_state({ stateName: 'total_price', value: total });\n}\nreturn run(args);",
+          "updatedAt": "2026-04-08T08:40:46.301Z"
+        }
+      ]
+    },
+    "integrations": {
+      "httpDatasources": []
+    }
+  }
+}

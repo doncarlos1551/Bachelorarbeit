@@ -4,8 +4,8 @@ Forschungsprototyp zur Bachelorarbeit **Konzeption und Evaluation eines MCP Sand
 
 ## Struktur
 
-- `backend/` - Backend (Express + MCP, BaselineService, Lowcoder-Adapter, SQLite-Store)
-- `frontend/` - Frontend-Skelett (Vue 3 + Quasar)
+- `backend/` - Backend (Express + MCP, BaselineService, Lowcoder-Adapter, SQLite-Store, Chat-Routing, Study-API)
+- `frontend/` - Frontend (Vue 3 + Quasar, Workspace mit Lowcoder-iframe und Chat-Sidebar)
 - `infrastructure/` - Lowcoder Docker-Compose, nginx-Vorlage, Postman-Collection
 
 ## Lizenz

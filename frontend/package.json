@@ -1,7 +1,7 @@
 {
   "name": "msl-frontend",
-  "version": "0.0.1",
-  "description": "MSL Frontend Skelett (Vue 3 + Quasar)",
+  "version": "0.3.0",
+  "description": "MSL Frontend, Workspace mit Lowcoder-Integration und Chat-Sidebar",
   "productName": "MSL Workspace",
   "author": "Carl Ahrens",
   "type": "module",
