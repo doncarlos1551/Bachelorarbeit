@@ -1,12 +1,18 @@
 import type { BaselineOperation } from "src/app/operations";
 import type {
+  ValidationResult,
   ValidationWarning,
   WarningSeverity,
 } from "src/msl/gates/gates.interfaces";
+import {
+  scanOperationsForDangerousContent,
+  type ContentScanResult,
+} from "src/msl/content-scanner";
 
 // === Validation Gate ===
 // Pre-Snapshot-Validierung, Kategorie infeasibility
 // - Mustache-Syntax-Check (balanciert, nicht verschachtelt) als single-source
+// - generic Validierung wie Funktionsbody-No-Return, Content-Scan-Warnungen
 // - Warning-Severity-Sort und Wire-Renderer
 
 interface MustacheTarget {
@@ -92,7 +98,7 @@ const formatMustacheError = (error: MustacheError): string => {
   if (error.problem === "unbalanced") {
     return `${error.field}: unbalancierte Mustache-Klammern ('${error.raw}').`;
   }
-  return `${error.field}: verschachtelte Mustache-Blöcke ('${error.raw}'). Nur flache {{...}} erlaubt.`;
+  return `${error.field}: verschachtelte Mustache-Blöcke ('${error.raw}'). Nur flache {{…}} erlaubt.`;
 };
 
 export const componentIdOf = (
@@ -136,3 +142,36 @@ export const renderWarningForWire = (warning: ValidationWarning): string =>
 export const renderWarningsForWire = (
   warnings: ValidationWarning[],
 ): string[] => warnings.map(renderWarningForWire);
+
+// === Generic Validation ===
+// Adapter-unabhängige Pre-Snapshot-Validierung, Kategorie infeasibility
+// - ContentScanHits als typisierte Warnungen (kind=content_pattern)
+export const evaluateGenericValidation = (
+  operations: BaselineOperation[],
+  scanResults: ContentScanResult[] = scanOperationsForDangerousContent(
+    operations,
+  ),
+): ValidationResult => {
+  const warnings: ValidationWarning[] = [];
+
+  for (const result of scanResults) {
+    for (const hit of result.hits) {
+      warnings.push({
+        severity: hit.severity,
+        kind: "content_pattern",
+        message: `${hit.label} in ${result.context}.`,
+      });
+    }
+  }
+
+  return { passed: true, errors: [], warnings };
+};
+
+export const mergeValidation = (
+  left: ValidationResult,
+  right: ValidationResult,
+): ValidationResult => {
+  const errors = [...left.errors, ...right.errors];
+  const warnings = [...left.warnings, ...right.warnings];
+  return { passed: errors.length === 0, errors, warnings };
+};

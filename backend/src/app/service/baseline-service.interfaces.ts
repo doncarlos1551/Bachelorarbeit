@@ -1,4 +1,5 @@
 import type { BaselineOperation } from "src/app/operations";
+import type { SchemaIssue } from "src/msl/gates/gates.interfaces";
 
 export interface ApplyOperationsInput {
   projectId?: string;
@@ -7,4 +8,6 @@ export interface ApplyOperationsInput {
   userComment?: string;
   operations: BaselineOperation[];
   mcpCall?: { name: string; args: Record<string, unknown> };
+  schemaIssues?: SchemaIssue[];
+  operationIndexes?: number[];
 }
