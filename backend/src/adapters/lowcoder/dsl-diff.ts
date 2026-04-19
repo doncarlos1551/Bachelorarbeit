@@ -54,15 +54,19 @@ export interface StructuralDiffResult {
 // filtert Lowcoder interne Felder aus dem diff (Maoz et al. 2011, semantic diffing)
 
 const METADATA_PATH_SEGMENTS: string[] = [
+  // Component-Housekeeping
   "/version",
   "/showDataLoadingIndicators",
   "/preventStyleOverwriting",
   "/appliedThemeId",
+  // Layout
   "/moved",
   "/static",
   "/isDraggable",
   "/resizeHandles",
+  // MSL internes Tracking
   "/__msl_",
+  // Query-Housekeeping
   "/notification",
   "/timeout",
   "/confirmationModal",
@@ -75,6 +79,7 @@ const METADATA_PATH_SEGMENTS: string[] = [
   "/variables",
   "/datasourceId",
   "/triggerType",
+  // TempState
   "/order",
   "/refTree",
 ];

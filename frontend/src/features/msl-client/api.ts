@@ -112,5 +112,4 @@ export interface ChatResponse {
   assistantMessage: string;
   toolCalls: ChatToolCallResult[];
   model: string;
-  usage?: { prompt_tokens: number; completion_tokens: number; total_tokens: number };
 }

@@ -21,7 +21,7 @@ HTTPS
 ## Schutzmaßnahmen
 
 - HTTPS
-- Rate Limits für die API
+- Rate Limits für Chat und API
 - Admin-Endpunkte serverseitig beschränken
 - Kill-Switch für Missbrauchsfälle
 
@@ -30,6 +30,7 @@ HTTPS
 ```bash
 cd backend
 npm install
+npm run seed
 npm run mcp:http
 ```
 

@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "MSL MCP Sandbox Layer",
-    "description": "MSL API Smoke Tests, Study Flow und Chat.\n\nOrdner:\n- 01 Ops\n- 02 Study Flow\n- 03 Study Reporting\n- 05 Chat\n\nVariablen:\n- baseUrl\n- actorId\n- projectId\n- studySessionId\n- caseRunId\n",
+    "description": "MSL API smoke tests und Studien-Admin.\n\nOrdner:\n- 01 Ops\n- 02 Study Flow\n- 03 Study Reporting\n- 04 Plans & Approval\n- 05 Chat\n- 06 Ablation\n- 07 Debug\n\nVariablen:\n- baseUrl\n- actorId\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -16,6 +16,10 @@
     },
     {
       "key": "projectId",
+      "value": ""
+    },
+    {
+      "key": "planId",
       "value": ""
     },
     {
@@ -316,6 +320,81 @@
       ]
     },
     {
+      "name": "04 Plans & Approval",
+      "description": "Manual plan review",
+      "item": [
+        {
+          "name": "Plan-Details",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/plans/{{planId}}"
+          }
+        },
+        {
+          "name": "Plan-Events",
+          "description": "Plan lifecycle events",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/admin/plans/{{planId}}/events"
+          }
+        },
+        {
+          "name": "Plan freigeben",
+          "description": "Approve plus auto-apply",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/plans/{{planId}}/approve",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actorId\": \"{{actorId}}\",\n  \"comment\": \"Freigabe via Postman\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Plan ablehnen",
+          "description": "Reject active plan",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/plans/{{planId}}/reject",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actorId\": \"{{actorId}}\",\n  \"comment\": \"Abgelehnt via Postman\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Plan anwenden (explizit)",
+          "description": "Explicit apply fallback",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/plans/{{planId}}/apply",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actorId\": \"{{actorId}}\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
       "name": "05 Chat (LLM + MCP)",
       "description": "Direct chat smoke tests",
       "item": [
@@ -357,6 +436,180 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"message\": \"Füge einen Button mit Text 'Test' hinzu.\",\n  \"projectId\": \"{{projectId}}\",\n  \"model\": \"gpt-4o-mini\",\n  \"history\": [\n    { \"role\": \"user\", \"content\": \"Zeige die Projektstruktur.\" },\n    { \"role\": \"assistant\", \"content\": \"Das Projekt enthält 5 Komponenten.\" }\n  ]\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 Ablation (Gate-Konfiguration)",
+      "description": "Technical gate ablation presets",
+      "item": [
+        {
+          "name": "Ablation: alle Gates OFF",
+          "description": "No MSL baseline",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/config",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gateModes\": {\n    \"policy\": \"off\",\n    \"preflight\": \"off\",\n    \"diff\": \"off\",\n    \"risk\": \"off\",\n    \"validation\": \"off\",\n    \"approval\": \"off\",\n    \"audit\": \"off\"\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "Ablation: alle Gates OBSERVE (loggen, nicht blockieren)",
+          "description": "Observe-only pipeline",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/config",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"executionMode\": \"auto\",\n  \"gateModes\": {\n    \"policy\": \"observe\",\n    \"preflight\": \"observe\",\n    \"diff\": \"observe\",\n    \"risk\": \"observe\",\n    \"validation\": \"observe\",\n    \"approval\": \"off\",\n    \"audit\": \"observe\"\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "Ablation: alle Gates ENFORCE",
+          "description": "Full enforced pipeline",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/config",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"executionMode\": \"manual\",\n  \"approvalRiskThreshold\": \"medium\",\n  \"gateModes\": {\n    \"policy\": \"enforce\",\n    \"preflight\": \"observe\",\n    \"diff\": \"observe\",\n    \"risk\": \"observe\",\n    \"validation\": \"enforce\",\n    \"approval\": \"enforce\",\n    \"audit\": \"observe\"\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "Ablation: nur Policy",
+          "description": "Policy only",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/config",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"executionMode\": \"auto\",\n  \"gateModes\": {\n    \"policy\": \"enforce\",\n    \"preflight\": \"off\",\n    \"diff\": \"off\",\n    \"risk\": \"off\",\n    \"validation\": \"off\",\n    \"approval\": \"off\",\n    \"audit\": \"observe\"\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "Ablation: nur Approval",
+          "description": "Approval only",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/config",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"executionMode\": \"manual\",\n  \"approvalRiskThreshold\": \"medium\",\n  \"gateModes\": {\n    \"policy\": \"off\",\n    \"preflight\": \"off\",\n    \"diff\": \"off\",\n    \"risk\": \"off\",\n    \"validation\": \"off\",\n    \"approval\": \"enforce\",\n    \"audit\": \"observe\"\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "Ablation: Open-Plan-Quota aktivieren",
+          "description": "Open-plan quota",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/config",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"openPlanMode\": \"block\",\n  \"maxOpenPlansPerSession\": 3\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "07 Debug & Maintenance",
+      "description": "Admin maintenance",
+      "item": [
+        {
+          "name": "Variant-Tracking setzen",
+          "description": "Variant tracking only",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/study/case-config",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"variant\": \"diff_risk\",\n  \"sessionId\": \"{{studySessionId}}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Projekt zuruecksetzen",
+          "description": "Restore project from fixture",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/study/reset-project",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": \"{{projectId}}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Config patchen (frei)",
+          "description": "Free-form config patch",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/admin/config",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"executionMode\": \"manual\",\n  \"approvalRiskThreshold\": \"medium\",\n  \"gateModes\": {\n    \"policy\": \"enforce\",\n    \"preflight\": \"observe\",\n    \"diff\": \"observe\",\n    \"risk\": \"observe\",\n    \"validation\": \"enforce\",\n    \"approval\": \"enforce\",\n    \"audit\": \"observe\"\n  }\n}"
             }
           }
         }

@@ -1,4 +1,4 @@
-import type { MslRuntimeConfigPatch } from "src/msl/config";
+import type { MslRuntimeConfigPatch } from "src/msl/core";
 
 // === StudyMslHooks ===
 // Schmaler MSL-Zugriff für Study-Router
