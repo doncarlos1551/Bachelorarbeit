@@ -1,0 +1,56 @@
+\section*{Disclaimer}
+\addcontentsline{toc}{section}{Disclaimer}
+
+\textbf{Erklärung zur Nutzung von KI-gestützten Werkzeugen}
+
+Im Rahmen der Erstellung dieser Arbeit wurden KI-gestützte Werkzeuge unterstützend eingesetzt.
+Hierbei wurden insbesondere ChatGPT (OpenAI, Modell GPT-5.3) sowie Claude (Anthropic, Modell Opus und Sonnet) verwendet.
+Der Einsatz beschränkte sich auf folgende Bereiche:
+
+\begin{itemize}
+    \item \textbf{Softwareentwicklung:} KI-gestützte Code-Assistenz wurde unterstützend bei
+          der Implementierung des Prototyps verwendet, insbesondere bei der Strukturierung
+          von Code, der Erstellung von Boilerplate-Komponenten sowie bei der Fehlersuche.
+          Sämtliche vorgeschlagenen oder erzeugten Codebestandteile wurden vom Autor geprüft,
+          angepasst und inhaltlich verantwortet.
+
+    \item \textbf{Textredaktion:} KI-Werkzeuge wurden punktuell zur sprachlichen Überarbeitung
+          einzelner Passagen eingesetzt. Die fachliche Konzeption, inhaltliche Ausarbeitung,
+          wissenschaftliche Argumentation und Analyse erfolgten eigenständig durch den Autor.
+\end{itemize}
+
+Die Verantwortung für den gesamten Inhalt dieser Arbeit - einschließlich aller fachlichen
+Aussagen, der Methodik, der Ergebnisinterpretation sowie der Quellenarbeit - liegt
+ausschließlich beim Autor.
+
+\vspace{12pt}
+\textbf{Hinweis zu fachlichen Vorüberlegungen und Praxisbezug}
+
+Einzelne Architekturüberlegungen dieser Arbeit wurden durch allgemeine berufspraktische
+Erfahrungen und eigene fachliche Vorüberlegungen des Autors mitinspiriert. Es wurden
+jedoch keine nicht öffentlichen Unterlagen, Quellcodes, internen Dokumente oder
+vertraulichen Informationen des Arbeitgebers in diese Arbeit übernommen.
+
+\IfFileExists{\declarationFile}{%
+    \includepdf[
+        pages=-,
+        pagecommand={\thispagestyle{plain}},
+        addtotoc={1,section,1,Declaration of Authenticity,declaration}
+    ]{\declarationFile}
+}{%
+    \section*{Declaration of Authenticity}
+    \addcontentsline{toc}{section}{Declaration of Authenticity}
+
+    I hereby declare that I have completed this Bachelors/ Master's thesis on my own and without
+    any additional external assistance. I have made use of only those sources and aids specified and
+    I have listed all the sources from which I have extracted text and content. This thesis or parts
+    thereof have never been presented to another examination board. I agree to a plagiarism check
+    of my thesis via a plagiarism detection service.
+
+    \vspace{2cm}
+
+    \begin{tabular}{p{6cm} p{6cm}}
+        \rule{5cm}{0.4pt} & \rule{5cm}{0.4pt} \\
+        Place, Date       & Student signature
+    \end{tabular}
+}

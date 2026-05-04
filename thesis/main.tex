@@ -1,0 +1,67 @@
+\documentclass[11pt, a4paper, oneside]{article}
+
+\input{config/packages}
+\input{config/metadata}
+\input{config/layout}
+\input{config/commands}
+
+\begin{document}
+
+\hypersetup{pageanchor=false}
+\input{frontmatter/titlepage}
+\clearpage
+\hypersetup{pageanchor=true}
+
+\pagenumbering{Roman}
+\setcounter{page}{2}
+
+\input{frontmatter/abstract}
+\newpage
+
+\tableofcontents
+\newpage
+
+\ifincludeListOfFigures
+  \listoffigures
+  \addcontentsline{toc}{section}{Abbildungsverzeichnis}
+  \newpage
+\fi
+
+\ifincludeListOfTables
+  \listoftables
+  \addcontentsline{toc}{section}{Tabellenverzeichnis}
+  \newpage
+\fi
+
+\input{frontmatter/acronyms}
+\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{chapters/01-einleitung}
+\newpage
+\input{chapters/02-grundlagen}
+\newpage
+\input{chapters/03-methodik}
+\newpage
+\input{chapters/04-konzeption}
+\newpage
+\input{chapters/05-evaluation}
+\newpage
+\input{chapters/06-diskussion}
+\newpage
+\input{chapters/07-fazit}
+
+\newpage
+\phantomsection
+\printbibliography[heading=bibintoc, title={Literaturverzeichnis}]
+
+\newpage
+\appendix
+\input{appendices/01-anhang}
+
+\newpage
+\input{frontmatter/declarations}
+
+\end{document}

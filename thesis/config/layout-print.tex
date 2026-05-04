@@ -1,0 +1,35 @@
+\geometry{a4paper, top=2cm, bottom=2cm, left=2cm, right=2cm}
+\onehalfspacing
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}
+{\normalfont\fontsize{12}{14.4}\bfseries\raggedright}
+{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\fontsize{12}{14.4}\bfseries\raggedright}
+{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\normalfont\fontsize{12}{14.4}\bfseries\raggedright}
+{\thesubsubsection}{1em}{}
+
+\titlespacing*{\section}{0pt}{12pt}{12pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\sloppy
+
+\renewcommand{\footnotesize}{\fontsize{10}{12}\selectfont}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}

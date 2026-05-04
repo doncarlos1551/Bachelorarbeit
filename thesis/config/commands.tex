@@ -1,0 +1,210 @@
+% Code-Listings + eigene Commands
+% Themes: Light (Default) und Dark - Umschalten via \codeDarkThemetrue
+%
+% Quellen für das Setup:
+% - listings-Package: https://ctan.org/pkg/listings
+% - VS Code Themes (Microsoft, MIT): github.com/microsoft/vscode/tree/main/extensions/theme-defaults/themes
+% - TypeScript-Keywords aus der TS Language Spec
+
+\definecolor{iuGreen}{RGB}{120, 190, 32}
+
+% Theme-Toggle -> Default Light
+\newif\ifcodeDarkTheme
+\codeDarkThemefalse
+
+% Light-Palette (VS Code Light+ leicht entsättigt für Print)
+\definecolor{codeKeywordLight}{RGB}{0, 100, 170}
+\definecolor{codeTypeLight}{RGB}{38, 127, 153}
+\definecolor{codeStringLight}{RGB}{163, 21, 21}
+\definecolor{codeCommentLight}{RGB}{100, 140, 80}
+\definecolor{codeNumberLight}{RGB}{120, 120, 120}
+\definecolor{codeFunctionLight}{RGB}{121, 94, 38}
+\definecolor{codeIdentifierLight}{RGB}{0, 0, 0}
+\definecolor{codeFrameLight}{RGB}{200, 200, 210}
+\definecolor{codeBgTSLight}{RGB}{246, 248, 251}
+\definecolor{codeBgJSLight}{RGB}{251, 250, 244}
+\definecolor{codeBgJSONLight}{RGB}{248, 250, 246}
+\definecolor{codeBgPyLight}{RGB}{247, 247, 250}
+\definecolor{codeBgGenericLight}{RGB}{245, 245, 245}
+\definecolor{codeHeaderBgLight}{RGB}{232, 236, 244}
+\definecolor{codeHeaderTextLight}{RGB}{40, 60, 90}
+
+% Dark-Palette (VS Code Dark+ dark_plus.json)
+\definecolor{codeKeywordDark}{HTML}{569CD6}
+\definecolor{codeTypeDark}{HTML}{4EC9B0}
+\definecolor{codeStringDark}{HTML}{CE9178}
+\definecolor{codeCommentDark}{HTML}{6A9955}
+\definecolor{codeNumberDark}{HTML}{B5CEA8}
+\definecolor{codeFunctionDark}{HTML}{DCDCAA}
+\definecolor{codeIdentifierDark}{HTML}{D4D4D4}
+\definecolor{codeFrameDark}{HTML}{3C3C3C}
+\definecolor{codeBgTSDark}{HTML}{1E1E2E}
+\definecolor{codeBgJSDark}{HTML}{1F1E1A}
+\definecolor{codeBgJSONDark}{HTML}{1E1F1C}
+\definecolor{codeBgPyDark}{HTML}{1F1F22}
+\definecolor{codeBgGenericDark}{HTML}{1E1E1E}
+\definecolor{codeHeaderBgDark}{HTML}{252526}
+\definecolor{codeHeaderTextDark}{HTML}{9CDCFE}
+
+% Aktive Theme-Farben
+\ifcodeDarkTheme
+  \colorlet{codeKeyword}{codeKeywordDark}
+  \colorlet{codeType}{codeTypeDark}
+  \colorlet{codeString}{codeStringDark}
+  \colorlet{codeComment}{codeCommentDark}
+  \colorlet{codeNumber}{codeNumberDark}
+  \colorlet{codeFunction}{codeFunctionDark}
+  \colorlet{codeIdentifier}{codeIdentifierDark}
+  \colorlet{codeFrame}{codeFrameDark}
+  \colorlet{codeBgTS}{codeBgTSDark}
+  \colorlet{codeBgJS}{codeBgJSDark}
+  \colorlet{codeBgJSON}{codeBgJSONDark}
+  \colorlet{codeBgPy}{codeBgPyDark}
+  \colorlet{codeBgGeneric}{codeBgGenericDark}
+  \colorlet{codeHeaderBg}{codeHeaderBgDark}
+  \colorlet{codeHeaderText}{codeHeaderTextDark}
+\else
+  \colorlet{codeKeyword}{codeKeywordLight}
+  \colorlet{codeType}{codeTypeLight}
+  \colorlet{codeString}{codeStringLight}
+  \colorlet{codeComment}{codeCommentLight}
+  \colorlet{codeNumber}{codeNumberLight}
+  \colorlet{codeFunction}{codeFunctionLight}
+  \colorlet{codeIdentifier}{codeIdentifierLight}
+  \colorlet{codeFrame}{codeFrameLight}
+  \colorlet{codeBgTS}{codeBgTSLight}
+  \colorlet{codeBgJS}{codeBgJSLight}
+  \colorlet{codeBgJSON}{codeBgJSONLight}
+  \colorlet{codeBgPy}{codeBgPyLight}
+  \colorlet{codeBgGeneric}{codeBgGenericLight}
+  \colorlet{codeHeaderBg}{codeHeaderBgLight}
+  \colorlet{codeHeaderText}{codeHeaderTextLight}
+\fi
+
+\graphicspath{{figures/}}
+\pgfplotsset{compat=1.18}
+\sisetup{locale=DE}
+\renewcommand{\figurename}{Abb.}
+\renewcommand{\tablename}{Tab.}
+
+% TypeScript-Dialekt - listings kennt kein TS, Keywords aus der TS Language Spec
+\lstdefinelanguage{TypeScript}{
+  keywords={break, case, catch, class, const, continue, debugger, default, delete,
+      do, else, enum, export, extends, false, finally, for, function, if,
+      implements, import, in, instanceof, interface, let, new, null, package,
+      private, protected, public, return, super, switch, this, throw, true,
+      try, typeof, var, void, while, with, yield, async, await, from, as,
+      readonly, abstract, namespace, type, satisfies, keyof, infer, declare, is},
+  keywordstyle=\color{codeKeyword}\bfseries,
+  ndkeywords={string, number, boolean, any, unknown, never, object, Promise, Array,
+      Record, Partial, Pick, Omit, Map, Set, void, Buffer},
+  ndkeywordstyle=\color{codeType}\bfseries,
+  identifierstyle=\color{codeIdentifier},
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{codeComment}\itshape,
+  stringstyle=\color{codeString},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`,
+}
+
+\lstdefinelanguage{JSONext}{
+  keywords={true, false, null},
+  keywordstyle=\color{codeKeyword}\bfseries,
+  sensitive=true,
+  string=[s]{"}{"},
+  stringstyle=\color{codeString},
+  comment=[l]{//},
+  commentstyle=\color{codeComment}\itshape,
+}
+
+% Basis-Style für alle Code-Listings
+\lstdefinestyle{codebase}{
+basicstyle=\ttfamily\footnotesize\color{codeIdentifier},
+backgroundcolor=\color{codeBgGeneric},
+keywordstyle=\color{codeKeyword}\bfseries,
+commentstyle=\color{codeComment}\itshape,
+stringstyle=\color{codeString},
+numberstyle=\tiny\color{codeNumber},
+numbers=left,
+numbersep=10pt,
+breaklines=true,
+breakatwhitespace=true,
+columns=fullflexible,
+keepspaces=true,
+showstringspaces=false,
+tabsize=2,
+frame=single,
+rulecolor=\color{codeFrame},
+framerule=0.4pt,
+framesep=4pt,
+xleftmargin=14pt,
+xrightmargin=4pt,
+aboveskip=4pt,
+belowskip=10pt,
+captionpos=b,
+upquote=true,
+literate={ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1 {…}{{...}}3
+}
+
+\lstdefinestyle{ts}{
+  style=codebase,
+  language=TypeScript,
+  backgroundcolor=\color{codeBgTS},
+}
+
+\lstdefinestyle{js}{
+  style=codebase,
+  language=Java,
+  backgroundcolor=\color{codeBgJS},
+}
+
+\lstdefinestyle{jsonext}{
+  style=codebase,
+  language=JSONext,
+  backgroundcolor=\color{codeBgJSON},
+}
+
+\lstdefinestyle{pythonext}{
+  style=codebase,
+  language=Python,
+  backgroundcolor=\color{codeBgPy},
+}
+
+\lstset{style=codebase}
+
+% Pfad-Header über Code-Listing Nutzung zB: \codepath{backend/src/msl/core.ts}
+\newcommand{\codepath}[1]{%
+  \par\nopagebreak
+  \noindent\colorbox{codeHeaderBg}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \color{codeHeaderText}\ttfamily\footnotesize\strut #1\strut%
+    }%
+  }\par\nopagebreak\vspace{-2pt}%
+}
+
+\addbibresource{bibliography.bib}
+\makeatletter
+\renewcommand*{\apablx@ifrevnameappcomma}{\@secondoftwo}
+\makeatother
+\DefineBibliographyExtras{ngerman}{%
+  \renewcommand*{\finalandcomma}{}%
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=codeKeyword,
+  pdfauthor={\thesisAuthor},
+  pdftitle={\thesisTitle},
+  pdfsubject={Bachelorarbeit},
+}
+
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\newif\ifincludeListOfFigures
+\includeListOfFiguresfalse
+\newif\ifincludeListOfTables
+\includeListOfTablesfalse
