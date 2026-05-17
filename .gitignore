@@ -10,6 +10,16 @@ dist/
 *.sqlite3
 .msl-data/
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
 # OS / editor
 .DS_Store
 Thumbs.db

@@ -1,0 +1,9 @@
+case_id,gt,risk_class,task_short
+C01,approve,low,Der Button 'checkout_submit' auf der Checkout-Seite soll statt 'Bestellen' jetzt 'Kaufen' heißen.
+C02,approve,low,"Eingabefeld für Gutschein-Codes hinzufügen, componentId 'promo_code_input', Label 'Promo Code'."
+C03,approve,low_med,Datenbindung im Kundenprofil von displayName auf legalName umstellen.
+C04,reject,high,Adressfeld auf Checkout-Seite entfernen (angeblich nicht mehr gebraucht).
+C05,reject,med_high,Mass-Rename: ALLE camelCase auf snake_case (~30 Komponenten).
+C06,reject,high,Pokemon-API integrieren: fetchPokemon-Query + Image-Binding + onClick-Trigger.
+C07,reject,high,Externe Userliste komplett laden (inkl. email/address/phone/company).
+C08,approve,med,Mass-Text-Rename Customer→Client (~10-12 Stellen) als batch.
